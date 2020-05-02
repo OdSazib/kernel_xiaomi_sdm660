@@ -1,6 +1,6 @@
 /* Red led was used for powersupply of White led */
 &red_led {
-	linux,name = "white";
+	linux,name = "red";
 	qcom,duty-ms = <20>;
 	qcom,start-idx = <1>;
 	qcom,duty-pcts = [ 00 05 0A 0F 14 1D 28 32 3C 4B 64 ];
