@@ -619,6 +619,7 @@ gen_headers_out_arm = [
     "linux/wanrouter.h",
     "linux/watchdog.h",
     "linux/wimax.h",
+    "linux/wireguard.h",
     "linux/wireless.h",
     "linux/x25.h",
     "linux/xattr.h",
