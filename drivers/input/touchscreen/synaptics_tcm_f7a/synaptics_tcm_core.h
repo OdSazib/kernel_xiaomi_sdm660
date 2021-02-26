@@ -79,7 +79,7 @@
 #define LOGV(log, ...) \
 	printk(KERN_ERR "[synaptics] %s (line %d): " log, __func__, __LINE__, ##__VA_ARGS__)
 #else
-#define LOGV(log, ...) {}
+#define LOGV(log, ...) do { } while (0)
 #endif
 
 #if 0
@@ -88,8 +88,8 @@
 #define LOG_DONE() \
 	printk(KERN_WARNING "[synaptics][debug] %s (file %s line %d) Done.\n", __func__, __FILE__, __LINE__)
 #else
-#define LOG_ENTRY() {}
-#define LOG_DONE() {}
+#define LOG_ENTRY() do { } while (0)
+#define LOG_DONE() do { } while (0)
 #endif
 
 
