@@ -42,7 +42,11 @@
 #define VSYNC_DELAY msecs_to_jiffies(17)
 
 #ifdef CONFIG_MACH_LONGCHEER
+#ifndef CONFIG_MACH_XIAOMI_CLOVER
 bool tianma_jdi_flag=0;
+#else
+extern bool tianma_jdi_flag;
+#endif
 char g_lcd_id[128];
 struct mdss_dsi_ctrl_pdata *ctrl_pdata_whitepoint;
 EXPORT_SYMBOL(g_lcd_id);
