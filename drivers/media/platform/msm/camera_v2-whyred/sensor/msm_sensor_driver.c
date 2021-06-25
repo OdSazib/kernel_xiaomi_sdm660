@@ -1289,7 +1289,7 @@ int32_t msm_sensor_driver_probe(void *setting,
 	unsigned long                        mount_pos = 0;
 	uint32_t                             is_yuv;
 
-#ifdef CONFIG_XIAOMI_WHYRED
+#ifdef CONFIG_MACH_XIAOMI_WHYRED
 	uint32_t                             i = 0;
 #endif
 
@@ -1391,7 +1391,7 @@ int32_t msm_sensor_driver_probe(void *setting,
 		goto free_slave_info;
 	}
 
-#ifdef CONFIG_XIAOMI_WHYRED
+#ifdef CONFIG_MACH_XIAOMI_WHYRED
 	if( (strcmp(slave_info->eeprom_name,"whyred_s5k5e8_ofilm_i") == 0) ||
 		(strcmp(slave_info->eeprom_name,"whyred_s5k5e8_qtech_ii") == 0)){
 

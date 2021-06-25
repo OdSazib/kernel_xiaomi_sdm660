@@ -1580,7 +1580,7 @@ static long msm_eeprom_subdev_fops_ioctl32(struct file *file, unsigned int cmd,
 
 #endif
 
-#ifdef CONFIG_XIAOMI_WHYRED
+#ifdef CONFIG_MACH_XIAOMI_WHYRED
 static camera_vendor_module_id whyred_s5k5e8_ofilm_i_get_otp_vendor_module_id
 	(struct msm_eeprom_ctrl_t *e_ctrl)
 {
@@ -1668,7 +1668,7 @@ static uint8_t get_otp_vendor_module_id(struct msm_eeprom_ctrl_t *e_ctrl, const 
 {
 	camera_vendor_module_id module_id=MID_NULL;
 
-#ifdef CONFIG_XIAOMI_WHYRED
+#ifdef CONFIG_MACH_XIAOMI_WHYRED
 	if(strcmp(eeprom_name, "whyred_s5k5e8_ofilm_i") == 0){
 		module_id = whyred_s5k5e8_ofilm_i_get_otp_vendor_module_id(e_ctrl);
 	}else if(strcmp(eeprom_name, "whyred_s5k5e8_qtech_ii") == 0){
