@@ -305,7 +305,7 @@ struct msm_sensor_id_info_t {
 	unsigned short sensor_id_mask;
 };
 
-#ifdef CONFIG_MACH_XIAOMI_SDM660
+#if defined(CONFIG_MACH_XIAOMI_SDM660) || defined(CONFIG_MACH_QCOM_CAMERA)
 enum msm_cci_i2c_master_t {
 	MSM_MASTER_0,
 	MSM_MASTER_1,
@@ -330,7 +330,7 @@ struct msm_vcm_id_info_t {
 	enum msm_cci_i2c_master_t cci_i2c_master;
 };
 
-#ifdef CONFIG_MACH_XIAOMI_NEW_CAMERA
+#if defined(CONFIG_MACH_XIAOMI_NEW_CAMERA) || defined(CONFIG_MACH_QCOM_CAMERA)
 struct msm_lens_id_info_t {
 	unsigned short eeprom_slave_addr;
 	unsigned short lens_id_addr;
@@ -353,10 +353,10 @@ struct msm_camera_sensor_slave_info {
 	enum i2c_freq_mode_t i2c_freq_mode;
 	enum msm_camera_i2c_reg_addr_type addr_type;
 	struct msm_sensor_id_info_t sensor_id_info;
-#ifdef CONFIG_MACH_XIAOMI_SDM660
+#if defined(CONFIG_MACH_XIAOMI_SDM660) || defined(CONFIG_MACH_QCOM_CAMERA)
 	struct msm_vendor_id_info_t vendor_id_info;
 	struct msm_vcm_id_info_t vcm_id_info;
-#ifdef CONFIG_MACH_XIAOMI_NEW_CAMERA
+#if defined(CONFIG_MACH_XIAOMI_NEW_CAMERA) || defined(CONFIG_MACH_QCOM_CAMERA)
 	struct msm_lens_id_info_t lens_id_info;
 #endif
 #endif
