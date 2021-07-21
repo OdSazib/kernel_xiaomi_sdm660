@@ -195,11 +195,11 @@ struct msm_camera_sensor_board_info {
 	const char *special_support_sensors[MAX_SPECIAL_SUPPORT_SIZE];
 	int32_t special_support_size;
 	struct msm_camera_slave_info *slave_info;
-#ifdef CONFIG_MACH_XIAOMI_SDM660
+#if defined(CONFIG_MACH_XIAOMI_SDM660) || defined(CONFIG_MACH_QCOM_CAMERA)
 	struct msm_vendor_id_info_t *vendor_id_info;
 	struct msm_vcm_id_info_t *vcm_id_info;
 #endif
-#ifdef CONFIG_MACH_XIAOMI_NEW_CAMERA
+#if defined(CONFIG_MACH_XIAOMI_NEW_CAMERA) || !defined(CONFIG_MACH_QCOM_CAMERA)
 	struct msm_lens_id_info_t *lens_id_info;
 #endif
 	struct msm_camera_csi_lane_params *csi_lane_params;

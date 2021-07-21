@@ -75,4 +75,10 @@ menu "Xiaomi board selection"
 		help
 		  Support for new camera blobs
 
+	config MACH_QCOM_CAMERA
+		bool "QComm oss camera"
+		depends on MACH_XIAOMI_SDM660
+		help
+		  Support for opensource camera blobs
+
 endmenu
