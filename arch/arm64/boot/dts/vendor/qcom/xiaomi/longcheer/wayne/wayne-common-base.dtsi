@@ -91,10 +91,6 @@
 	#include "fg-gen3-batterydata-l8866default-3000mah.dtsi"
 };
 
-&dsi_nt36672_tianma_fhd_video {
-	qcom,mdss-brightness-max-level = <4095>;
-};
-
 &thermal_zones {
 	ibat-high {
 		status = "disabled";
