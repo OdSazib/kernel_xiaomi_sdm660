@@ -101,3 +101,7 @@
 &wsa881x_214_en {
 	status = "disabled";
 };
+
+&pmic_analog_codec {
+	qcom,cdc-micbias-cfilt-mv = <2600000>;
+};
