@@ -1,4 +1,4 @@
-CONFIG_LOCALVERSION="-halcyon-MiUi-v5.7-oldCam
+CONFIG_LOCALVERSION="-halcyon-MiUi-v5.8-oldCam
 # CONFIG_LOCALVERSION_AUTO is not set
 # CONFIG_USELIB is not set
 CONFIG_AUDIT=y
