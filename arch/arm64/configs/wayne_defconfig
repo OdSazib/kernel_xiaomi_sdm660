@@ -1,4 +1,4 @@
-CONFIG_LOCALVERSION="-halcyon-EAS-v5.8-newCam"
+CONFIG_LOCALVERSION="-halcyon-EAS-v5.9-newCam"
 # CONFIG_LOCALVERSION_AUTO is not set
 # CONFIG_USELIB is not set
 CONFIG_AUDIT=y
