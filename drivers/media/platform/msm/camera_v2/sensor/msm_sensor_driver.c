@@ -1428,42 +1428,27 @@ int32_t msm_sensor_driver_probe(void *setting,
 			rc = -ENOMEM;
 			goto free_slave_info;
 		}
-		if (copy_from_user(slave_info32, (void __user *)setting,
+		if (copy_from_user((void *)slave_info32, setting,
 			sizeof(*slave_info32))) {
-			pr_err("failed: copy_from_user\n");
-			rc = -EFAULT;
-			kfree(slave_info32);
-			goto free_slave_info;
-		}
-
+				pr_err("failed: copy_from_user");
+				rc = -EFAULT;
+				kfree(slave_info32);
+				goto free_slave_info;
+			}
 		strlcpy(slave_info->actuator_name, slave_info32->actuator_name,
 			sizeof(slave_info->actuator_name));
-
 		strlcpy(slave_info->eeprom_name, slave_info32->eeprom_name,
 			sizeof(slave_info->eeprom_name));
-
 		strlcpy(slave_info->sensor_name, slave_info32->sensor_name,
 			sizeof(slave_info->sensor_name));
-
 		strlcpy(slave_info->ois_name, slave_info32->ois_name,
 			sizeof(slave_info->ois_name));
-
 		strlcpy(slave_info->flash_name, slave_info32->flash_name,
 			sizeof(slave_info->flash_name));
-
 		slave_info->addr_type = slave_info32->addr_type;
 		slave_info->camera_id = slave_info32->camera_id;
-
 		slave_info->i2c_freq_mode = slave_info32->i2c_freq_mode;
 		slave_info->sensor_id_info = slave_info32->sensor_id_info;
-#if defined(CONFIG_MACH_XIAOMI_SDM660) || defined(CONFIG_MACH_QCOM_CAMERA)
-		slave_info->vendor_id_info = slave_info32->vendor_id_info;
-		slave_info->vcm_id_info = slave_info32->vcm_id_info;
-#endif
-#if defined(CONFIG_MACH_XIAOMI_NEW_CAMERA) || !defined(CONFIG_MACH_QCOM_CAMERA)
-		slave_info->lens_id_info = slave_info32->lens_id_info;
-#endif
-
 		slave_info->slave_addr = slave_info32->slave_addr;
 		slave_info->power_setting_array.size =
 			slave_info32->power_setting_array.size;
@@ -1471,23 +1456,25 @@ int32_t msm_sensor_driver_probe(void *setting,
 			slave_info32->power_setting_array.size_down;
 		slave_info->power_setting_array.size_down =
 			slave_info32->power_setting_array.size_down;
-
-		slave_info->power_setting_array.power_down_setting =
-			(struct msm_sensor_power_setting *)
-			(compat_ptr(
-			slave_info32->power_setting_array.power_down_setting));
-
 		slave_info->power_setting_array.power_setting =
-			(struct msm_sensor_power_setting *)
-			(compat_ptr(
-			slave_info32->power_setting_array.power_setting));
-
+			compat_ptr(slave_info32->
+				power_setting_array.power_setting);
+		slave_info->power_setting_array.power_down_setting =
+			compat_ptr(slave_info32->
+				power_setting_array.power_down_setting);
 		slave_info->sensor_init_params =
 			slave_info32->sensor_init_params;
 		slave_info->output_format =
 			slave_info32->output_format;
 		slave_info->bypass_video_node_creation =
 			!!slave_info32->bypass_video_node_creation;
+#if defined(CONFIG_MACH_XIAOMI_SDM660) || defined(CONFIG_MACH_QCOM_CAMERA)
+		slave_info->vendor_id_info = slave_info32->vendor_id_info;
+		slave_info->vcm_id_info = slave_info32->vcm_id_info;
+#endif
+#if defined(CONFIG_MACH_XIAOMI_NEW_CAMERA) || !defined(CONFIG_MACH_QCOM_CAMERA)
+		slave_info->lens_id_info = slave_info32->lens_id_info;
+#endif
 		kfree(slave_info32);
 	} else
 #endif
@@ -1661,8 +1648,8 @@ int32_t msm_sensor_driver_probe(void *setting,
 		 * probe
 		 */
 		if (slave_info->sensor_id_info.sensor_id ==
-			s_ctrl->sensordata->cam_slave_info->
-				sensor_id_info.sensor_id &&
+			s_ctrl->sensordata->cam_slave_info->sensor_id_info
+			.sensor_id &&
 #if defined(CONFIG_MACH_XIAOMI_SDM660) || defined(CONFIG_MACH_QCOM_CAMERA)
 			slave_info->vendor_id_info.vendor_id ==
 				s_ctrl->sensordata->cam_slave_info->
